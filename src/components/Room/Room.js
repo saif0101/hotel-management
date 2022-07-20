@@ -14,6 +14,7 @@ import LocalHotelIcon from '@material-ui/icons/LocalHotel';
 import WcIcon from '@material-ui/icons/Wc';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,9 +41,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Room({room}){
   const classes = useStyles();
-  const history = useHistory()
+  const navigate = useNavigate()
     const handleBook = (bedType) => {
-        history.push(`/book/${bedType}`);
+        navigate(`/book/${bedType}`,{ replace: true });
+       
     }
   return (
     <Card className={classes.root}>
