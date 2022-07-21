@@ -23,7 +23,7 @@ const Login = () => {
         const auth = getAuth();
         signInWithPopup(auth, provider)
             .then((result) => {
-                const { displayName, email, photoURL, password } = result.user;
+                const { displayName, email } = result.user;
                 const signInuser = {name :displayName,email:email}
                 setLoggedInUser(signInuser);
                 navigate(from, { replace: true });
@@ -43,6 +43,7 @@ const Login = () => {
                 // The email of the user's account used.
                 const email = error.customData.email;
                 // The AuthCredential type that was used.
+                console.log(errorCode,errorMessage,email)
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 // ...
             });
